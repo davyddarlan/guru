@@ -19,8 +19,6 @@ class IdEspecie
         if (!Cookie::has(env('ID_ESPECIE', ''))) {
             return redirect()->route('especie.index');
         }
-
-        $request->id_especie = Cookie::get(env('ID_ESPECIE', ''));
         
         return $next($request);
     }

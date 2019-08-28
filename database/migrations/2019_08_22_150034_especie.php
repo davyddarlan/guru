@@ -15,7 +15,7 @@ class Especie extends Migration
     {
         Schema::create('especies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome_cientifico', 255);
+            $table->string('nome_cientifico', 255)->unique();;
             $table->string('descobridor', 255)->nullable();
             $table->date('data_descoberta')->nullable();
             $table->string('estado_conservacao', 2)->nullable();
@@ -31,6 +31,6 @@ class Especie extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('especies');
     }
 }

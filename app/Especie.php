@@ -20,4 +20,9 @@ class Especie extends Model
     {
         return 'codigo_internacional_especie';
     }
+
+    public function nomesPopulares()
+    {
+        return $this->hasMany('App\NomePopular', 'id_especie');
+    }
 }

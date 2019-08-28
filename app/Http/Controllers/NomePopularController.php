@@ -13,20 +13,29 @@ class NomePopularController extends Controller
     {
         $this->middleware('id.especie');
     }
+
+    protected function getIdEspecie()
+    {
+        return Cookie::get(env('ID_ESPECIE'), '');
+    }
+
+    protected function getEspecie()
+    {
+        return Especie::where('id', $this->getIdEspecie())->first();
+    }
     
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $especie = Especie::where('id', $request->id_especie)->first();
-        $nomes_populares = NomePopular::all();
+    public function index()
+    {        
+        $especie = $this->getEspecie();
         
         return view('nome-popular/index', [
             'especie' => $especie,
-            'nomes_populares' => $nomes_populares
+            'nomes_populares' => $especie->nomesPopulares
         ]);
     }
 
@@ -35,9 +44,9 @@ class NomePopularController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {   
-        $especie = Especie::where('id', $request->id_especie)->first();
+        $especie = $this->getEspecie();
         
         return view('nome-popular/create', [
             'especie' => $especie
@@ -52,9 +61,12 @@ class NomePopularController extends Controller
      */
     public function store(Request $request)
     {   
-        NomePopular::create([
+        $nomePopular = NomePopular::create([
             'nome_popular' => $request->nome_popular
         ]);
+
+        $nomePopular->id_especie = $this->getIdEspecie();
+        $nomePopular->save();
     }
 
     /**

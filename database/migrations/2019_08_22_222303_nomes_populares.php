@@ -15,8 +15,12 @@ class NomesPopulares extends Migration
     {
         Schema::create('nomes_populares', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_especie');
+            $table->unsignedBigInteger('id_especie')->nullable();
             $table->string('nome_popular', 255);
+            
+            $table->foreign('id_especie')
+                ->references('id')->on('especies')
+                ->onDelete('cascade');
         });
     }
 
@@ -27,6 +31,6 @@ class NomesPopulares extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('nomes_populares');
     }
 }
