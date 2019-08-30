@@ -10,6 +10,7 @@
         <ul>
             <li> <a href="{{ route('especie.index') }}">lista de espécies</a></li>
             <li> <a href="{{ route('nome-popular.index') }}">nomes populares</a></li>
+            <li> <a href="{{ route('galeria.index') }}">galeria de fotos</a></li>
             <li><a href="{{ route('especie.edit', [ 'especie' => $especie->codigo_internacional_especie ]) }}">Editar</a></li>
             <li>
                 <form action="{{ route('especie.destroy', [ 'especie' => $especie->codigo_internacional_especie ]) }}" method="post">

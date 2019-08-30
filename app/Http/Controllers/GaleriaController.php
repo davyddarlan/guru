@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\NomePopular;
+use App\Galeria;
 use App\Especie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
 
-class NomePopularController extends Controller
-{   
-    public function __construct()
+class GaleriaController extends Controller
+{
+    public function __construct() 
     {
         $this->middleware('id.especie');
     }
@@ -20,12 +20,11 @@ class NomePopularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         $especie = Especie::getEspecie();
         
-        return view('nome-popular/index', [
-            'especie' => $especie,
-            'nomes_populares' => $especie->nomesPopulares
+        return view('galeria/index', [
+            'especie' => $especie
         ]);
     }
 
@@ -35,10 +34,10 @@ class NomePopularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $especie = Especie::getEspecie();
-        
-        return view('nome-popular/create', [
+
+        return view('galeria/create', [
             'especie' => $especie
         ]);
     }
@@ -50,22 +49,26 @@ class NomePopularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $nomePopular = NomePopular::create([
-            'nome_popular' => $request->nome_popular
+    {
+        $path = Storage::disk('public')->put('avatars', $request->fotografia);
+        
+        $galeria = Galeria::create([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'localizacao' => $path
         ]);
 
-        $nomePopular->id_especie = Especie::getIdEspecie();
-        $nomePopular->save();
+        $galeria->id_especie = Especie::getIdEspecie();
+        $galeria->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Galeria  $galeria
      * @return \Illuminate\Http\Response
      */
-    public function show(NomePopular $nomePopular)
+    public function show(Galeria $galeria)
     {
         //
     }
@@ -73,10 +76,10 @@ class NomePopularController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Galeria  $galeria
      * @return \Illuminate\Http\Response
      */
-    public function edit(NomePopular $nomePopular)
+    public function edit(Galeria $galeria)
     {
         //
     }
@@ -85,10 +88,10 @@ class NomePopularController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Galeria  $galeria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NomePopular $nomePopular)
+    public function update(Request $request, Galeria $galeria)
     {
         //
     }
@@ -96,10 +99,10 @@ class NomePopularController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Galeria  $galeria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NomePopular $nomePopular)
+    public function destroy(Galeria $galeria)
     {
         //
     }

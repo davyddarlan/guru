@@ -21,5 +21,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
     'especie' => 'EspecieController',
-    'nome-popular' => 'NomePopularController'
+    'nome-popular' => 'NomePopularController',
+    'uso' => 'UsoController',
+    'marcador' => 'MarcadorController',
+    'galeria' => 'GaleriaController'
+]);
+
+// clados
+
+Route::resources([
+    'reino' => 'Cladograma\ReinoController',
+    'filo' => 'Cladograma\FiloController',
+    'classe' => 'Cladograma\ClasseController',
+    'ordem' => 'Cladograma\OrdemController',
+    'familia' => 'Cladograma\FamiliaController',
+    'genero' => 'Cladograma\GeneroController'
 ]);

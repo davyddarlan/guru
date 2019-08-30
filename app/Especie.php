@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cookie;
 
 class Especie extends Model
 {
@@ -21,8 +22,23 @@ class Especie extends Model
         return 'codigo_internacional_especie';
     }
 
+    public static function getIdEspecie()
+    {
+        return Cookie::get(env('ID_ESPECIE'), '');
+    }
+
+    public static function getEspecie()
+    {
+        return self::where('id', self::getIdEspecie())->first();
+    }
+
     public function nomesPopulares()
     {
         return $this->hasMany('App\NomePopular', 'id_especie');
+    }
+
+    public function galerias()
+    {
+        return $this->hasMany('App\Galeria', 'id_especie');
     }
 }

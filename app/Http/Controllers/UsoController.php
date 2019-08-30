@@ -2,30 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\NomePopular;
-use App\Especie;
+use App\Uso;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 
-class NomePopularController extends Controller
-{   
-    public function __construct()
-    {
-        $this->middleware('id.especie');
-    }
-    
+class UsoController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        $especie = Especie::getEspecie();
+    {
+        $usos = Uso::all();
         
-        return view('nome-popular/index', [
-            'especie' => $especie,
-            'nomes_populares' => $especie->nomesPopulares
+        return view('uso/index', [
+            'usos' => $usos
         ]);
     }
 
@@ -35,12 +27,8 @@ class NomePopularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $especie = Especie::getEspecie();
-        
-        return view('nome-popular/create', [
-            'especie' => $especie
-        ]);
+    {
+        return view('uso/create');
     }
 
     /**
@@ -50,22 +38,19 @@ class NomePopularController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $nomePopular = NomePopular::create([
-            'nome_popular' => $request->nome_popular
+    {
+        Uso::create([
+            'uso' => $request->uso
         ]);
-
-        $nomePopular->id_especie = Especie::getIdEspecie();
-        $nomePopular->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Uso  $uso
      * @return \Illuminate\Http\Response
      */
-    public function show(NomePopular $nomePopular)
+    public function show(Uso $uso)
     {
         //
     }
@@ -73,10 +58,10 @@ class NomePopularController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Uso  $uso
      * @return \Illuminate\Http\Response
      */
-    public function edit(NomePopular $nomePopular)
+    public function edit(Uso $uso)
     {
         //
     }
@@ -85,10 +70,10 @@ class NomePopularController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Uso  $uso
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NomePopular $nomePopular)
+    public function update(Request $request, Uso $uso)
     {
         //
     }
@@ -96,10 +81,10 @@ class NomePopularController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\NomePopular  $nomePopular
+     * @param  \App\Uso  $uso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NomePopular $nomePopular)
+    public function destroy(Uso $uso)
     {
         //
     }
