@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdemsTable extends Migration
+class Subfamilia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateOrdemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ordems', function (Blueprint $table) {
+        Schema::create('sub_familias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ordem', 255);
+            $table->string('subfamilia', 255);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateOrdemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordems');
+        Schema::dropIfExists('sub_familias');
     }
 }

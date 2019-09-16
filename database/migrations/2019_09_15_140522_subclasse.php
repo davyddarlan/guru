@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFamiliasTable extends Migration
+class Subclasse extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateFamiliasTable extends Migration
      */
     public function up()
     {
-        Schema::create('familias', function (Blueprint $table) {
+        Schema::create('sub_classes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('familia', 255);
+            $table->string('subclasse', 255);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateFamiliasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('familias');
+        Schema::dropIfExists('sub_classes');
     }
 }

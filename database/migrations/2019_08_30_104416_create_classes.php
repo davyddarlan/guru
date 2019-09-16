@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFilosTable extends Migration
+class CreateClasses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateFilosTable extends Migration
      */
     public function up()
     {
-        Schema::create('filos', function (Blueprint $table) {
+        Schema::create('classes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('filo', 255);
+            $table->string('classe', 255);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateFilosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filos');
+        Schema::dropIfExists('classes');
     }
 }

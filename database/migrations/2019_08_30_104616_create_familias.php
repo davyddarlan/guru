@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReinosTable extends Migration
+class CreateFamilias extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateReinosTable extends Migration
      */
     public function up()
     {
-        Schema::create('reinos', function (Blueprint $table) {
+        Schema::create('familias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('reino', 255);
+            $table->string('familia', 255);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateReinosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reinos');
+        Schema::dropIfExists('familias');
     }
 }

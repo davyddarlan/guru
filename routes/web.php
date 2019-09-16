@@ -35,5 +35,8 @@ Route::resources([
     'classe' => 'Cladograma\ClasseController',
     'ordem' => 'Cladograma\OrdemController',
     'familia' => 'Cladograma\FamiliaController',
-    'genero' => 'Cladograma\GeneroController'
+    'genero' => 'Cladograma\GeneroController',
+    'divisao' => 'Cladograma\DivisaoController',
+    'subclasse' => 'Cladograma\SubClasseController',
+    'subfamilia' => 'Cladograma\SubFamiliaController'
 ]);
