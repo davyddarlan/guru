@@ -15,7 +15,11 @@ class SubFamiliaController extends Controller
      */
     public function index()
     {
-        return view('cladograma/subfamilia/index');
+        $subfamilias = SubFamilia::all();
+        
+        return view('cladograma/subfamilia/index', [
+            'subfamilias' => $subfamilias
+        ]);
     }
 
     /**
@@ -36,7 +40,9 @@ class SubFamiliaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SubFamilia::create([
+            'subfamilia' => $request->subfamilia
+        ]);
     }
 
     /**
@@ -56,9 +62,13 @@ class SubFamiliaController extends Controller
      * @param  \App\SubFamilia  $subFamilia
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubFamilia $subFamilia)
-    {
-        return view('cladograma/subfamilia/edit');
+    public function edit($id)
+    {   
+        $subfamilia = SubFamilia::find($id);
+        
+        return view('cladograma/subfamilia/edit', [
+            'subfamilia' => $subfamilia
+        ]);
     }
 
     /**
@@ -68,9 +78,11 @@ class SubFamiliaController extends Controller
      * @param  \App\SubFamilia  $subFamilia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubFamilia $subFamilia)
+    public function update(Request $request, $id)
     {
-        //
+        $subfamilia = SubFamilia::find($id);
+        $subfamilia->subfamilia = $request->subfamilia;
+        $subfamilia->save();
     }
 
     /**

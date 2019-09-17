@@ -27,8 +27,6 @@ Route::resources([
     'galeria' => 'GaleriaController'
 ]);
 
-// clados
-
 Route::resources([
     'reino' => 'Cladograma\ReinoController',
     'filo' => 'Cladograma\FiloController',

@@ -8,19 +8,19 @@
     <body>  
         <ul>
             <li><a href="{{ route('especie.index') }}">especies</a></li>
-            <li><a href="{{ route('classe.create') }}">registrar classe</a></li>
+            <li><a href="{{ route('subfamilia.create') }}">registrar subfamilia</a></li>
         <ul>
-        <h1>Tipos de classes</h1>
+        <h1>Subfamilias</h1>
         <table border="1">
             <thead>
-                <th>classe</th>
+                <th>subfamilia</th>
                 <th>Edição</th>
             </thead>
             <tbody>
-                @foreach($classes as $classe)
+                @foreach($subfamilias as $subfamilia)
                     <tr>
-                        <td>{{ $classe->classe }}</td>
-                        <td><a href="{{ route('classe.edit', [ 'classe' => $classe->id ]) }}">editar</a></td>
+                        <td>{{ $subfamilia->subfamilia }}</td>
+                        <td><a href="{{ route('subfamilia.edit', [ 'subfamilia' => $subfamilia->id ]) }}">editar</a></td>
                     </tr>
                 @endforeach
             </tbody>

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Cladograma;
+namespace App\Http\Controllers;
 
-use App\SubClasse;
+use App\CoordenadaGeografica;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class SubClasseController extends Controller
+class CoordenadaGeograficaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,7 @@ class SubClasseController extends Controller
      */
     public function index()
     {
-        $subclasses = SubClasse::all();
-        
-        return view('cladograma/subclasse/index', [
-            'subclasses' => $subclasses
-        ]);
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class SubClasseController extends Controller
      */
     public function create()
     {
-        return view('cladograma/subclasse/create');
+        //
     }
 
     /**
@@ -40,18 +35,16 @@ class SubClasseController extends Controller
      */
     public function store(Request $request)
     {
-        SubClasse::create([
-            'subclasse' => $request->subclasse
-        ]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SubClasse  $subClasse
+     * @param  \App\CoordenadaGeografica  $coordenadaGeografica
      * @return \Illuminate\Http\Response
      */
-    public function show(SubClasse $subClasse)
+    public function show(CoordenadaGeografica $coordenadaGeografica)
     {
         //
     }
@@ -59,39 +52,33 @@ class SubClasseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SubClasse  $subClasse
+     * @param  \App\CoordenadaGeografica  $coordenadaGeografica
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CoordenadaGeografica $coordenadaGeografica)
     {
-        $subclasse = SubClasse::find($id);
-        
-        return view('cladograma/subclasse/edit', [
-            'subclasse' => $subclasse
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SubClasse  $subClasse
+     * @param  \App\CoordenadaGeografica  $coordenadaGeografica
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, CoordenadaGeografica $coordenadaGeografica)
     {
-        $subclasse = SubClasse::find($id);
-        $subclasse->subclasse = $request->subclasse;
-        $subclasse->save();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SubClasse  $subClasse
+     * @param  \App\CoordenadaGeografica  $coordenadaGeografica
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubClasse $subClasse)
+    public function destroy(CoordenadaGeografica $coordenadaGeografica)
     {
         //
     }

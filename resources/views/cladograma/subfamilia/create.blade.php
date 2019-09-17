@@ -7,13 +7,13 @@
     </head>
     <body>
         <ul>
-            <li><a href="{{ route('classe.index') }}">voltar</a></li>
+            <li><a href="{{ route('subfamilia.index') }}">voltar</a></li>
         </ul>
-        <h1>Registrar classe</h1>
-        <form method="post" action="{{ route('classe.store') }}">
+        <h1>Registrar subfamilia</h1>
+        <form method="post" action="{{ route('subfamilia.store') }}">
             @csrf()
 
-            <input type="text" name="classe" placeholder="classe"> <br>
+            <input type="text" name="subfamilia" placeholder="subfamilia"> <br>
 
             <input type="submit" value="criar"> 
         </form>

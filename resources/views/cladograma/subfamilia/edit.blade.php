@@ -7,14 +7,14 @@
     </head>
     <body>
         <ul>
-            <li><a href="{{ route('classe.index') }}">voltar</a></li>
+            <li><a href="{{ route('subfamilia.index') }}">voltar</a></li>
         </ul>
-        <h1>Editar classe {{ $classe->classe }}</h1>
-        <form method="post" action="{{ route('classe.update', ['classe' => $classe->id]) }}">
+        <h1>Editar subfamilia {{ $subfamilia->subfamilia }}</h1>
+        <form method="post" action="{{ route('subfamilia.update', ['subfamilia' => $subfamilia->id]) }}">
             @csrf()
             @method('PUT')
 
-            <input type="text" name="classe" value="{{ $classe->classe }}" placeholder="classe"> <br>
+            <input type="text" name="subfamilia" value="{{ $subfamilia->subfamilia }}" placeholder="subfamilia"> <br>
 
             <input type="submit" value="editar"> 
         </form>
